@@ -8,20 +8,20 @@ log:
 
 serve:
   public:
-    base_url: ${KRATOS_PUBLIC_URL}
+    base_url: ${KRATOS_PUBLIC_URL:-http://localhost:4433}
     host: 0.0.0.0
     port: 4433
     cors:
       enabled: true
       allowed_origins:
-        - ${CORS_ALLOWED_ORIGIN}
+        - "*"
       allowed_methods: [GET, POST, PUT, PATCH, DELETE]
       allowed_headers: [Authorization, Cookie, Content-Type]
       exposed_headers: [Content-Type]
       allow_credentials: true
 
   admin:
-    base_url: ${KRATOS_ADMIN_URL}
+    base_url: ${KRATOS_ADMIN_URL:-http://localhost:4434}
     host: 127.0.0.1
     port: 4434
 
@@ -41,9 +41,9 @@ session:
   lifespan: 24h
 
 selfservice:
-  default_browser_return_url: ${DEFAULT_RETURN_URL}
+  default_browser_return_url: ${DEFAULT_RETURN_URL:-http://localhost:3000}
   allowed_return_urls:
-    - ${ALLOWED_RETURN_URL}
+    - ${ALLOWED_RETURN_URL:-http://localhost:3000}
 
   methods:
     password:
@@ -59,23 +59,23 @@ selfservice:
 
   flows:
     error:
-      ui_url: ${KRATOS_UI_URL}/error
+      ui_url: ${KRATOS_UI_URL:-http://localhost:3000}/error
     settings:
-      ui_url: ${KRATOS_UI_URL}/settings
+      ui_url: ${KRATOS_UI_URL:-http://localhost:3000}/settings
       privileged_session_max_age: 15m
     login:
-      ui_url: ${KRATOS_UI_URL}/login
+      ui_url: ${KRATOS_UI_URL:-http://localhost:3000}/login
       lifespan: 10m
     registration:
-      ui_url: ${KRATOS_UI_URL}/registration
+      ui_url: ${KRATOS_UI_URL:-http://localhost:3000}/registration
       lifespan: 10m
     recovery:
       enabled: false
-      ui_url: ${KRATOS_UI_URL}/recovery
+      ui_url: ${KRATOS_UI_URL:-http://localhost:3000}/recovery
     verification:
       enabled: false
-      ui_url: ${KRATOS_UI_URL}/verification
+      ui_url: ${KRATOS_UI_URL:-http://localhost:3000}/verification
 
     logout:
       after:
-        default_browser_return_url: ${DEFAULT_RETURN_URL}
+        default_browser_return_url: ${DEFAULT_RETURN_URL:-http://localhost:3000}
