@@ -1,5 +1,10 @@
 FROM oryd/kratos:v25.4.0
 
+# Install envsubst for config variable substitution
+USER root
+RUN apk add --no-cache gettext
+USER ory
+
 WORKDIR /etc/kratos
 
 COPY kratos.yml /etc/kratos/kratos.yml
