@@ -10,11 +10,10 @@ serve:
   public:
     base_url: ${KRATOS_PUBLIC_URL}
     host: 0.0.0.0
-    port: 4433
     cors:
       enabled: true
       allowed_origins:
-        - "*"
+        - ${CORS_ALLOWED_ORIGIN}
       allowed_methods: [GET, POST, PUT, PATCH, DELETE]
       allowed_headers: [Authorization, Cookie, Content-Type]
       exposed_headers: [Content-Type]
