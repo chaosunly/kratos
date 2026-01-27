@@ -1,6 +1,6 @@
 version: v1.0.0
 
-dsn: DSN=${{Postgres.DATABASE_URL}}
+dsn: ${DSN}
 
 log:
   level: info
