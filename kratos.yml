@@ -14,6 +14,7 @@ serve:
       enabled: true
       allowed_origins:
         - ${KRATOS_PUBLIC_URL}
+        - ${KRATOS_UI_URL}
       allowed_methods: [GET, POST, PUT, PATCH, DELETE]
       allowed_headers:
         - Authorization
