@@ -10,6 +10,9 @@ serve:
   public:
     base_url: ${KRATOS_PUBLIC_URL}
     host: 0.0.0.0
+    cookies:
+      secure: true
+      same_site: Lax
     cors:
       enabled: true
       allowed_origins:
@@ -43,7 +46,7 @@ identity:
 session:
   lifespan: 24h
   cookie:
-    same_site: None
+    same_site: Lax
     path: /
     persistent: true
 
