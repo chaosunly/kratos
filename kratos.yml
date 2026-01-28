@@ -10,9 +10,6 @@ serve:
   public:
     base_url: ${KRATOS_PUBLIC_URL}
     host: 0.0.0.0
-    cookies:
-      secure: true
-      same_site: Lax
     cors:
       enabled: true
       allowed_origins:
