@@ -43,7 +43,7 @@ identity:
 
 session:
   lifespan: 24h
-   cookie:
+  cookie:
     domain: up.railway.app
     same_site: Lax
     path: /
