@@ -1,4 +1,4 @@
-version: v1.0.0
+version: v1.1.0
 
 dsn: ${DSN}
 
@@ -13,14 +13,18 @@ serve:
     cors:
       enabled: true
       allowed_origins:
-        - ${CORS_ALLOWED_ORIGIN}
+        - ${KRATOS_PUBLIC_URL}
       allowed_methods: [GET, POST, PUT, PATCH, DELETE]
-      allowed_headers: [Authorization, Cookie, Content-Type]
+      allowed_headers:
+        - Authorization
+        - Cookie
+        - Content-Type
+        - X-CSRF-Token
       exposed_headers: [Content-Type]
       allow_credentials: true
 
+  # Admin API stays private (important)
   admin:
-    base_url: ${KRATOS_ADMIN_URL}
     host: 127.0.0.1
     port: 4434
 
@@ -40,9 +44,9 @@ session:
   lifespan: 24h
 
 selfservice:
-  default_browser_return_url: ${DEFAULT_RETURN_URL}
+  default_browser_return_url: ${KRATOS_PUBLIC_URL}
   allowed_return_urls:
-    - ${ALLOWED_RETURN_URL}
+    - ${KRATOS_PUBLIC_URL}
 
   methods:
     password:
@@ -58,23 +62,28 @@ selfservice:
 
   flows:
     error:
-      ui_url: ${KRATOS_UI_URL}/error
-    settings:
-      ui_url: ${KRATOS_UI_URL}/settings
-      privileged_session_max_age: 15m
+      ui_url: ${KRATOS_PUBLIC_URL}/error
+
     login:
-      ui_url: ${KRATOS_UI_URL}/login
+      ui_url: ${KRATOS_PUBLIC_URL}/login
       lifespan: 10m
+
     registration:
-      ui_url: ${KRATOS_UI_URL}/registration
+      ui_url: ${KRATOS_PUBLIC_URL}/registration
       lifespan: 10m
+
+    settings:
+      ui_url: ${KRATOS_PUBLIC_URL}/settings
+      privileged_session_max_age: 15m
+
     recovery:
       enabled: false
-      ui_url: ${KRATOS_UI_URL}/recovery
+      ui_url: ${KRATOS_PUBLIC_URL}/recovery
+
     verification:
       enabled: false
-      ui_url: ${KRATOS_UI_URL}/verification
+      ui_url: ${KRATOS_PUBLIC_URL}/verification
 
     logout:
       after:
-        default_browser_return_url: ${DEFAULT_RETURN_URL}
+        default_browser_return_url: ${KRATOS_PUBLIC_URL}
