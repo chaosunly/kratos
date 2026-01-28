@@ -11,7 +11,7 @@ serve:
     base_url: ${KRATOS_PUBLIC_URL}
     host: 0.0.0.0
     cors:
-      enabled: false
+      enabled: true
       allowed_origins:
         - ${KRATOS_PUBLIC_URL}
         - ${KRATOS_UI_URL}
