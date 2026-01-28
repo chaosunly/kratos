@@ -91,3 +91,6 @@ selfservice:
     logout:
       after:
         default_browser_return_url: ${KRATOS_UI_URL}
+
+  log:
+    leak_sensitive_values: false
