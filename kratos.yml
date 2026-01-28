@@ -43,6 +43,11 @@ identity:
 
 session:
   lifespan: 24h
+   cookie:
+    domain: up.railway.app
+    same_site: Lax
+    path: /
+    persistent: true
 
 selfservice:
   default_browser_return_url: ${DEFAULT_RETURN_URL}
