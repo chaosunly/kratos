@@ -12,15 +12,19 @@
           "format": "email",
           "title": "E-Mail",
           "ory.sh/kratos": {
-            "credentials": { "password": { "identifier": true } }
-          }
-        },
-        "verification": {
+            "credentials": {
+              "password": {
+                "identifier": true
+              }
+            },
+            "verification": {
               "via": "email"
             },
             "recovery": {
               "via": "email"
-            },
+            }
+          }
+        },
         "name": {
           "type": "object",
           "properties": {
@@ -32,5 +36,6 @@
       "required": ["email"],
       "additionalProperties": false
     }
-  }
+  },
+  "required": ["traits"]
 }
