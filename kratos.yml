@@ -98,8 +98,8 @@ selfservice:
 courier:
   smtp:
     connection_uri: ${SMTP_CONNECTION_URI}
-    from_address: ${SMTP_FROM_ADDRESS:-Sunly.chao@rexform.io}
-    from_name: ${SMTP_FROM_NAME:-Ory-Kratos}
+    from_address: ${SMTP_FROM_ADDRESS}
+    from_name: ${SMTP_FROM_NAME}
   templates:
     recovery:
       valid:
