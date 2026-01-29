@@ -19,7 +19,7 @@ serve:
     cors:
       enabled: true
       allowed_origins:
-        - ${CORS_ALLOWED_ORIGIN}
+        - ${KRATOS_PUBLIC_URL}
       allowed_methods: [GET, POST, PUT, PATCH, DELETE]
       allowed_headers:
         - Authorization
