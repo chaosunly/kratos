@@ -81,12 +81,12 @@ selfservice:
       privileged_session_max_age: 15m
 
     recovery:
-      enabled: true
+      enabled: false
       ui_url: ${KRATOS_UI_URL}/recovery
       use: code
       lifespan: 1h
     verification:
-      enabled: true
+      enabled: false
       ui_url: ${KRATOS_UI_URL}/verification
       use: code
       lifespan: 1h
@@ -94,9 +94,3 @@ selfservice:
     logout:
       after:
         default_browser_return_url: ${KRATOS_UI_URL}
-
-courier:
-  smtp:
-    connection_uri: ${SMTP_CONNECTION_URI}
-    from_address: ${SMTP_FROM_ADDRESS}
-    from_name: ${SMTP_FROM_NAME}
