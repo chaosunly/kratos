@@ -56,13 +56,13 @@ selfservice:
     password:
       enabled: true
     totp:
-      enabled: false
+      enabled: true
     lookup_secret:
-      enabled: false
+      enabled: true
     link:
-      enabled: false
+      enabled: true
     code:
-      enabled: false
+      enabled: true
 
   flows:
     error:
