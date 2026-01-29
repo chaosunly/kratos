@@ -10,4 +10,4 @@ envsubst < /etc/kratos/kratos.yml > /tmp/kratos.yml
 kratos -c /tmp/kratos.yml migrate sql -e --yes
 
 # Start Kratos
-kratos -c /tmp/kratos.yml serve --dev --watch-courier
+kratos -c /etc/kratos/kratos.yml serve --watch-courier
