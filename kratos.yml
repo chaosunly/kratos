@@ -100,18 +100,3 @@ courier:
     connection_uri: ${SMTP_CONNECTION_URI}
     from_address: ${SMTP_FROM_ADDRESS}
     from_name: ${SMTP_FROM_NAME}
-  templates:
-    recovery:
-      valid:
-        email:
-          body:
-            plaintext: file:///etc/kratos/courier-templates/recovery/valid/email.body.plaintext.gotmpl
-            html: file:///etc/kratos/courier-templates/recovery/valid/email.body.gotmpl
-          subject: file:///etc/kratos/courier-templates/recovery/valid/email.subject.gotmpl
-    verification:
-      valid:
-        email:
-          body:
-            plaintext: file:///etc/kratos/courier-templates/verification/valid/email.body.plaintext.gotmpl
-            html: file:///etc/kratos/courier-templates/verification/valid/email.body.gotmpl
-          subject: file:///etc/kratos/courier-templates/verification/valid/email.subject.gotmpl
