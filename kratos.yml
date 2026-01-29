@@ -83,20 +83,17 @@ selfservice:
     recovery:
       enabled: true
       ui_url: ${KRATOS_UI_URL}/recovery
-      use: code
-      lifespan: 1h
+
     verification:
       enabled: true
       ui_url: ${KRATOS_UI_URL}/verification
-      use: code
-      lifespan: 1h
 
     logout:
       after:
         default_browser_return_url: ${KRATOS_UI_URL}
 
-    courier:
-      smtp:
-        connection_uri: ${COURIER_SMTP_CONNECTION_URI}
-        from_address: ${COURIER_SMTP_FROM_ADDRESS}
-        from_name: ${COURIER_SMTP_FROM_NAME}
+courier:
+  smtp:
+    connection_uri: ${COURIER_SMTP_CONNECTION_URI}
+    from_address: ${COURIER_SMTP_FROM_ADDRESS}
+    from_name: ${COURIER_SMTP_FROM_NAME}
