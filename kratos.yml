@@ -52,6 +52,7 @@ session:
   cookie:
     same_site: Lax
     path: /
+    domain: gateway-production-c2b4.up.railway.app
     persistent: true
 
 selfservice:
