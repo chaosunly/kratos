@@ -16,10 +16,11 @@ serve:
   public:
     base_url: ${KRATOS_PUBLIC_URL}
     host: 0.0.0.0
+    port: 4433
     cors:
       enabled: true
       allowed_origins:
-        - https://gateway-production-c2b4.up.railway.app
+        - ${CORS_ALLOWED_ORIGIN}
       allowed_methods: [GET, POST, PUT, PATCH, DELETE]
       allowed_headers:
         - Authorization
@@ -29,7 +30,7 @@ serve:
       exposed_headers: [Content-Type]
       allow_credentials: true
 
-  # Admin API stays private (important)
+  # Admin API - accessible only via Gateway private network
   admin:
     host: 0.0.0.0
     port: 4434

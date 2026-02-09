@@ -1,8 +1,6 @@
 #!/bin/sh
 set -e
 
-export SERVE_PUBLIC_PORT="${PORT:-8080}"
-
 # Ensure these exist (Railway sets them, this just makes it explicit)
 : "${KRATOS_PUBLIC_URL:?missing}"
 : "${KRATOS_UI_URL:?missing}"
@@ -14,6 +12,11 @@ export SERVE_PUBLIC_PORT="${PORT:-8080}"
 : "${SECRETS_COOKIE:?missing}"
 : "${COURIER_SMTP_CONNECTION_URI:?missing}"
 
+# Generate Kratos config
 envsubst < /etc/kratos/kratos.yml > /tmp/kratos.yml
+
+# Run migrations
 kratos -c /tmp/kratos.yml migrate sql -e --yes
-kratos -c /tmp/kratos.yml serve --watch-courier
+
+# Start Kratos (no public exposure - accessed via gateway only)
+exec kratos -c /tmp/kratos.yml serve --watch-courier

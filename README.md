@@ -15,11 +15,24 @@ Ory Kratos is an open-source identity and user management system that handles us
 
 ## Architecture
 
-This deployment includes:
+This deployment uses a gateway architecture:
 
-- **Ory Kratos**: The identity server (Public API on port 8080, Admin API on localhost)
+- **Gateway (nginx)**: Single public endpoint that routes all traffic
+  - `/admin/*` → Kratos Admin API (port 4434) ⚠️ NO AUTH - ADD LATER
+  - `/self-service/*`, `/sessions/*`, `/health/*` → Kratos Public API (port 4433)
+  - `/relation-tuples` → Keto permissions API
+  - `/` → Your UI application
+- **Ory Kratos**: Identity server (INTERNAL - not publicly exposed)
+  - Public API: port 4433
+  - Admin API: port 4434
 - **PostgreSQL**: Database for storing identity data (provided by Railway)
 - **Email courier**: For sending verification and recovery emails via SMTP
+
+**Railway Configuration:**
+
+- Only the Gateway service needs public exposure
+- Kratos, Keto, and UI use Railway's private networking
+- Set `KRATOS_INTERNAL` to Kratos service internal URL (e.g., `http://kratos.railway.internal`)
 
 ## Quick Deploy to Railway
 
@@ -307,6 +320,54 @@ To update to a newer version of Kratos:
 - [Railway Documentation](https://docs.railway.app/)
 - [Kratos GitHub Repository](https://github.com/ory/kratos)
 - [Ory Community Slack](https://slack.ory.sh/)
+
+## Gateway Configuration
+
+All traffic is routed through a separate Gateway service (see `/gateway` folder). The Gateway exposes:
+
+- **Public endpoints**: `/self-service/*`, `/sessions/*`, `/health/*`
+- **⚠️ Admin API** (NO AUTH): `/admin/*`
+
+### Security Warning
+
+**The admin API at `/admin/*` is publicly accessible without authentication!**
+
+The admin API has full control over:
+
+- Creating/deleting identities
+- Managing sessions
+- Full control over your auth system
+
+### TODO: Add Authentication to Admin API
+
+Modify the Gateway's [nginx.conf.template](../gateway/nginx.conf.template) to add authentication:
+
+```nginx
+location ^~ /admin/ {
+  # Option 1: Basic Auth
+  auth_basic "Admin Access";
+  auth_basic_user_file /etc/nginx/.htpasswd;
+
+  # Option 2: API Key validation
+  if ($http_authorization != "Bearer $ADMIN_API_KEY") {
+    return 401 "Unauthorized";
+  }
+
+  # Option 3: IP whitelist
+  allow 10.0.0.0/8;  # Private network
+  deny all;
+
+  proxy_pass ${KRATOS_INTERNAL}:4434/admin/;
+  # ... rest of config
+}
+```
+
+**Recommended solutions:**
+
+- Use OAuth2 Proxy with your identity provider
+- Implement API key middleware
+- Use Cloudflare Access or similar zero-trust solution
+- Keep admin API internal and access via Railway private networking
 
 ## License
 
