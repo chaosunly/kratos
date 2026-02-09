@@ -56,7 +56,7 @@ session:
     persistent: true
 
 selfservice:
-  default_browser_return_url: ${KRATOS_PUBLIC_URL}
+  default_browser_return_url: ${KRATOS_PUBLIC_URL}/dashboard
   allowed_return_urls:
     - ${KRATOS_PUBLIC_URL}
 
