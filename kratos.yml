@@ -74,27 +74,27 @@ selfservice:
 
   flows:
     error:
-      ui_url: ${KRATOS_UI_URL}/error
+      ui_url: ${KRATOS_UI_URL}/auth/error
 
     login:
-      ui_url: ${KRATOS_UI_URL}/login
+      ui_url: ${KRATOS_UI_URL}/auth/login
       lifespan: 10m
 
     registration:
-      ui_url: ${KRATOS_UI_URL}/registration
+      ui_url: ${KRATOS_UI_URL}/auth/registration
       lifespan: 10m
 
     settings:
-      ui_url: ${KRATOS_UI_URL}/settings
+      ui_url: ${KRATOS_UI_URL}/auth/settings
       privileged_session_max_age: 15m
 
     recovery:
       enabled: true
-      ui_url: ${KRATOS_UI_URL}/recovery
+      ui_url: ${KRATOS_UI_URL}/auth/recovery
 
     verification:
       enabled: true
-      ui_url: ${KRATOS_UI_URL}/verification
+      ui_url: ${KRATOS_UI_URL}/auth/verification
 
     logout:
       after:
