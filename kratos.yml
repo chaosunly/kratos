@@ -27,10 +27,10 @@ serve:
         - Cookie
         - Content-Type
         - X-CSRF-Token
-      exposed_headers: [Content-Type]
+      exposed_headers: [Content-Type, Set-Cookie]
       allow_credentials: true
 
-  # Admin API - accessible only via Gateway private network
+  # Admin API - accessible only via private network
   admin:
     host: 0.0.0.0
     port: 4434
@@ -52,13 +52,13 @@ session:
   cookie:
     same_site: Lax
     path: /
-    domain: gateway-production-c2b4.up.railway.app
+    domain: ${COOKIE_DOMAIN}
     persistent: true
 
 selfservice:
-  default_browser_return_url: ${DEFAULT_RETURN_URL}
+  default_browser_return_url: ${KRATOS_PUBLIC_URL}
   allowed_return_urls:
-    - ${ALLOWED_RETURN_URL}
+    - ${KRATOS_PUBLIC_URL}
 
   methods:
     password:
@@ -74,28 +74,28 @@ selfservice:
 
   flows:
     error:
-      ui_url: ${KRATOS_UI_URL}/auth/error
+      ui_url: ${KRATOS_PUBLIC_URL}/auth/error
 
     login:
-      ui_url: ${KRATOS_UI_URL}/auth/login
+      ui_url: ${KRATOS_PUBLIC_URL}/auth/login
       lifespan: 10m
 
     registration:
-      ui_url: ${KRATOS_UI_URL}/auth/registration
+      ui_url: ${KRATOS_PUBLIC_URL}/auth/registration
       lifespan: 10m
 
     settings:
-      ui_url: ${KRATOS_UI_URL}/auth/settings
+      ui_url: ${KRATOS_PUBLIC_URL}/auth/settings
       privileged_session_max_age: 15m
 
     recovery:
       enabled: true
-      ui_url: ${KRATOS_UI_URL}/auth/recovery
+      ui_url: ${KRATOS_PUBLIC_URL}/auth/recovery
 
     verification:
       enabled: true
-      ui_url: ${KRATOS_UI_URL}/auth/verification
+      ui_url: ${KRATOS_PUBLIC_URL}/auth/verification
 
     logout:
       after:
-        default_browser_return_url: ${KRATOS_UI_URL}
+        default_browser_return_url: ${KRATOS_PUBLIC_URL}
