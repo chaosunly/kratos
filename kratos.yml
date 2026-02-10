@@ -81,8 +81,16 @@ selfservice:
       lifespan: 10m
 
     registration:
-      ui_url: ${KRATOS_PUBLIC_URL}/auth/registration
+      ui_url: https://gateway-production-c2b4.up.railway.app/auth/registration
       lifespan: 10m
+      after:
+        password:
+          hooks:
+            - hook: web_hook
+              config:
+                url: https://gateway-production-c2b4.up.railway.app/api/auth/registration-hook
+                method: POST
+                body: base64://eyJpZGVudGl0eSI6IHt9fQ==
 
     settings:
       ui_url: ${KRATOS_PUBLIC_URL}/auth/settings
