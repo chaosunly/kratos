@@ -61,6 +61,19 @@ selfservice:
     - ${KRATOS_PUBLIC_URL}
 
   methods:
+    oidc:
+        enabled: true
+        config:
+          providers:
+            - id: simplelogin
+              provider: generic
+              client_id: ${SIMPLELOGIN_CLIENT_ID}
+              client_secret: ${SIMPLELOGIN_CLIENT_SECRET}
+              issuer_url: https://app.simplelogin.io
+              mapper_url: file:///etc/kratos/simplelogin.jsonnet # We need to create this!
+              scope:
+                - openid
+                - email
     password:
       enabled: true
     totp:
