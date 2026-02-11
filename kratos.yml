@@ -14,7 +14,7 @@ log:
 
 serve:
   public:
-    base_url: https://gateway-production-7363.up.railway.app/pp
+    base_url: https://gateway-production-7363.up.railway.app
     host: 0.0.0.0
     port: 4433
     cors:
@@ -43,9 +43,22 @@ secrets:
 
 identity:
   default_schema_id: default
+
   schemas:
     - id: default
       url: file:///etc/kratos/identity.schema.json
+
+  providers:
+    - id: simplelogin
+      type: oidc
+      provider: generic
+      client_id: ${SIMPLELOGIN_CLIENT_ID}
+      client_secret: ${SIMPLELOGIN_CLIENT_SECRET}
+      issuer_url: https://app.simplelogin.io
+      mapper_url: file:///etc/kratos/simplelogin.jsonnet
+      scope:
+        - openid
+        - email
 
 session:
   lifespan: 24h
@@ -61,18 +74,7 @@ selfservice:
     - ${KRATOS_PUBLIC_URL}
 
   methods:
-    oidc:
-        enabled: true 
-        providers:
-            - id: simplelogin
-              provider: generic
-              client_id: ${SIMPLELOGIN_CLIENT_ID}
-              client_secret: ${SIMPLELOGIN_CLIENT_SECRET}
-              issuer_url: https://app.simplelogin.io
-              mapper_url: file:///etc/kratos/simplelogin.jsonnet # We need to create this!
-              scope:
-                - openid
-                - email
+ 
     password:
       enabled: true
     totp:
