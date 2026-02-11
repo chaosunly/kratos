@@ -14,7 +14,7 @@ log:
 
 serve:
   public:
-    base_url: https://gateway-production-c2b4.up.railway.app
+    base_url: https://gateway-production-7363.up.railway.app/pp
     host: 0.0.0.0
     port: 4433
     cors:
@@ -62,9 +62,8 @@ selfservice:
 
   methods:
     oidc:
-        enabled: true
-        config:
-          providers:
+        enabled: true 
+        providers:
             - id: simplelogin
               provider: generic
               client_id: ${SIMPLELOGIN_CLIENT_ID}
@@ -90,18 +89,18 @@ selfservice:
       ui_url: ${KRATOS_PUBLIC_URL}/auth/error
 
     login:
-      ui_url: https://gateway-production-c2b4.up.railway.app/auth/login
+      ui_url: https://gateway-production-7363.up.railway.app/auth/login
       lifespan: 10m
 
     registration:
-      ui_url: https://gateway-production-c2b4.up.railway.app/auth/registration
+      ui_url: https://gateway-production-7363.up.railway.app/auth/registration
       lifespan: 10m
       after:
         password:
           hooks:
             - hook: web_hook
               config:
-                url: https://gateway-production-c2b4.up.railway.app/api/auth/registration-hook
+                url: https://gateway-production-7363.up.railway.app/api/auth/registration-hook
                 method: POST
                 body: base64://eyJpZGVudGl0eSI6IHt9fQ==
 
