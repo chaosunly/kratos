@@ -117,10 +117,6 @@ selfservice:
     verification:
       enabled: true
       ui_url: ${KRATOS_PUBLIC_URL}/auth/verification
-
-    consent:  
-      ui_url: ${KRATOS_PUBLIC_URL}/auth/consent
-
     logout:
       after:
         default_browser_return_url: ${KRATOS_PUBLIC_URL}
