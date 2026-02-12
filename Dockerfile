@@ -9,6 +9,7 @@ WORKDIR /etc/kratos
 
 COPY kratos.yml /etc/kratos/kratos.yml
 COPY identity.schema.json /etc/kratos/identity.schema.json
+COPY simplelogin.jsonnet /etc/kratos/simplelogin.jsonnet
 COPY --chmod=755 entrypoint.sh /entrypoint.sh
 
 ENTRYPOINT ["/entrypoint.sh"]
