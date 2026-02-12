@@ -88,35 +88,35 @@ selfservice:
 
   flows:
     error:
-      ui_url: ${KRATOS_PUBLIC_URL}/auth/error
+      ui_url: ${KRATOS_PUBLIC_URL}/error
 
     login:
-      ui_url: https://gateway-production-7363.up.railway.app/auth/login
+      ui_url: https://gateway-production-7363.up.railway.app/login
       lifespan: 10m
 
     registration:
-      ui_url: https://gateway-production-7363.up.railway.app/auth/registration
+      ui_url: https://gateway-production-7363.up.railway.app/registration
       lifespan: 10m
       after:
         password:
           hooks:
             - hook: web_hook
               config:
-                url: https://gateway-production-7363.up.railway.app/api/auth/registration-hook
+                url: https://gateway-production-7363.up.railway.app/api/registration-hook
                 method: POST
                 body: base64://eyJpZGVudGl0eSI6IHt9fQ==
 
     settings:
-      ui_url: ${KRATOS_PUBLIC_URL}/auth/settings
+      ui_url: ${KRATOS_PUBLIC_URL}/settings
       privileged_session_max_age: 15m
 
     recovery:
       enabled: true
-      ui_url: ${KRATOS_PUBLIC_URL}/auth/recovery
+      ui_url: ${KRATOS_PUBLIC_URL}/recovery
 
     verification:
       enabled: true
-      ui_url: ${KRATOS_PUBLIC_URL}/auth/verification
+      ui_url: ${KRATOS_PUBLIC_URL}/verification
 
     logout:
       after:
