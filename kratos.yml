@@ -14,7 +14,7 @@ log:
 
 serve:
   public:
-    base_url: https://gateway-production-7363.up.railway.app:4433
+    base_url: https://gateway-production-7363.up.railway.app
     host: 0.0.0.0
     port: 4433
     cors:
