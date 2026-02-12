@@ -55,20 +55,25 @@ session:
     domain: ${COOKIE_DOMAIN}
     persistent: true
 
+oauth2_provider:
+  url: http://Hydra:4445  # Adjust based on your Railway service name
+
 selfservice:
+  default_browser_return_url: ${KRATOS_PUBLIC_URL}/dashboard  
   methods:
     oidc:
       enabled: true
-      providers:
-        - id: simplelogin
-          provider: generic
-          client_id: ${SIMPLELOGIN_CLIENT_ID}
-          client_secret: ${SIMPLELOGIN_CLIENT_SECRET}
-          issuer_url: https://app.simplelogin.io
-          mapper_url: file:///etc/kratos/simplelogin.jsonnet
-          scope:
-            - openid
-            - email
+      config: 
+        providers:
+          - id: simplelogin
+            provider: generic
+            client_id: ${SIMPLELOGIN_CLIENT_ID}
+            client_secret: ${SIMPLELOGIN_CLIENT_SECRET}
+            issuer_url: https://app.simplelogin.io
+            mapper_url: file:///etc/kratos/simplelogin.jsonnet
+            scope:
+              - openid
+              - email
     password:
       enabled: true
     totp:
@@ -112,6 +117,9 @@ selfservice:
     verification:
       enabled: true
       ui_url: ${KRATOS_PUBLIC_URL}/auth/verification
+
+    consent:  
+      ui_url: ${KRATOS_PUBLIC_URL}/auth/consent
 
     logout:
       after:
