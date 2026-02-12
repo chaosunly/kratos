@@ -59,7 +59,7 @@ oauth2_provider:
   url: http://hydra.railway.internal:4445  # Adjust based on your Railway service name
 
 selfservice:
-  default_browser_return_url: ${KRATOS_PUBLIC_URL}/ 
+  default_browser_return_url: ${KRATOS_PUBLIC_URL}/welcome
   methods:
     oidc:
       enabled: true
