@@ -61,6 +61,21 @@ selfservice:
     - ${ALLOWED_RETURN_URL}
 
   methods:
+    oidc:
+      enabled: true
+      config:
+        providers:
+          - id: simplelogin
+            provider: generic
+            label: SimpleLogin
+            client_id: simpleloginwithkratos-ntjbamhswk
+            client_secret: eveyrwoytnubxzvlhylxoagsppithespughussps
+            issuer_url: https://app.simplelogin.io
+            mapper_url: base64://ewogICJpZGVudGl0eSI6IHsKICAgICJ0cmFpdHMiOiB7CiAgICAgICJlbWFpbCI6ICJ7eyBjbGFpbXMuZW1haWwgfX0iLAogICAgICAibmFtZSI6IHsKICAgICAgICAiZmlyc3QiOiAie3sgY2xhaW1zLm5hbWUgfX0iCiAgICAgIH0KICAgIH0KICB9Cn0=
+            scope:
+              - openid
+              - email
+              - profile
     password:
       enabled: true
     totp:
