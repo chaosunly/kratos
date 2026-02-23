@@ -58,19 +58,26 @@ Configure the following environment variables in your Railway project settings:
 
 ### Required Variables
 
-| Variable                      | Description                        | Example                                  |
-| ----------------------------- | ---------------------------------- | ---------------------------------------- |
-| `DSN`                         | PostgreSQL connection string       | `postgresql://user:pass@host:5432/db`    |
-| `KRATOS_PUBLIC_URL`           | Public URL of your Kratos instance | `https://kratos.railway.app`             |
-| `KRATOS_UI_URL`               | URL of your frontend UI            | `https://your-app.com`                   |
-| `DEFAULT_RETURN_URL`          | Default redirect after auth flows  | `https://your-app.com/dashboard`         |
-| `ALLOWED_RETURN_URL`          | Allowed return URL pattern         | `https://your-app.com`                   |
-| `CORS_ALLOWED_ORIGIN`         | CORS allowed origin                | `https://your-app.com`                   |
-| `SECRETS_DEFAULT`             | Random 32-character secret         | Generate with: `openssl rand -hex 32`    |
-| `SECRETS_COOKIE`              | Random 32-character secret         | Generate with: `openssl rand -hex 32`    |
-| `COURIER_SMTP_CONNECTION_URI` | SMTP connection string             | `smtp://user:pass@smtp.provider.com:587` |
-| `COURIER_SMTP_FROM_ADDRESS`   | Email sender address               | `noreply@yourdomain.com`                 |
-| `COURIER_SMTP_FROM_NAME`      | Email sender name                  | `Your App Name`                          |
+| Variable                      | Description                                  | Example                                  |
+| ----------------------------- | -------------------------------------------- | ---------------------------------------- |
+| `DSN`                         | PostgreSQL connection string                 | `postgresql://user:pass@host:5432/db`    |
+| `ORY_KRATOS_PUBLIC_URL`       | Gateway URL + /.ory path (Kratos public API) | `https://gateway.railway.app/.ory`       |
+| `KRATOS_UI_URL`               | Gateway URL (for UI routes)                  | `https://gateway.railway.app`            |
+| `DEFAULT_RETURN_URL`          | Default redirect after auth flows            | `https://gateway.railway.app/dashboard`  |
+| `ALLOWED_RETURN_URL`          | Allowed return URL pattern                   | `https://gateway.railway.app`            |
+| `CORS_ALLOWED_ORIGIN`         | CORS allowed origin                          | `https://gateway.railway.app`            |
+| `COOKIE_DOMAIN`               | Cookie domain (use Railway domain)           | `gateway.railway.app`                    |
+| `SECRETS_DEFAULT`             | Random 32-character secret                   | Generate with: `openssl rand -hex 32`    |
+| `SECRETS_COOKIE`              | Random 32-character secret                   | Generate with: `openssl rand -hex 32`    |
+| `COURIER_SMTP_CONNECTION_URI` | SMTP connection string                       | `smtp://user:pass@smtp.provider.com:587` |
+| `COURIER_SMTP_FROM_ADDRESS`   | Email sender address                         | `noreply@yourdomain.com`                 |
+| `COURIER_SMTP_FROM_NAME`      | Email sender name                            | `Your App Name`                          |
+
+⚠️ **Important:**
+
+- `ORY_KRATOS_PUBLIC_URL` MUST include the `/.ory` path (e.g., `https://gateway.railway.app/.ory`)
+- `KRATOS_UI_URL`, `DEFAULT_RETURN_URL`, `ALLOWED_RETURN_URL` should NOT include `/.ory`
+- All URLs should point to your Gateway service, not individual Kratos/Keto services
 
 ### Setting up DSN
 
