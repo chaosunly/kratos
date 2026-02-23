@@ -71,7 +71,7 @@ selfservice:
             client_id: simpleloginwithkratos-ntjbamhswk
             client_secret: eveyrwoytnubxzvlhylxoagsppithespughussps
             issuer_url: https://app.simplelogin.io
-            mapper_url: base64://ewogICJpZGVudGl0eSI6IHsKICAgICJ0cmFpdHMiOiB7CiAgICAgICJlbWFpbCI6ICJ7eyBjbGFpbXMuZW1haWwgfX0iLAogICAgICAibmFtZSI6IHsKICAgICAgICAiZmlyc3QiOiAie3sgY2xhaW1zLm5hbWUgfX0iCiAgICAgIH0KICAgIH0KICB9Cn0K
+            mapper_url: base64://bG9jYWwgY2xhaW1zID0gc3RkLmV4dFZhcignY2xhaW1zJyk7CnsKICBpZGVudGl0eTogewogICAgdHJhaXRzOiB7CiAgICAgIGVtYWlsOiBjbGFpbXMuZW1haWwsCiAgICAgIG5hbWU6IHsKICAgICAgICBmaXJzdDogY2xhaW1zLm5hbWUsCiAgICAgIH0sCiAgICB9LAogIH0sCn0K
             scope:
               - openid
               - email
