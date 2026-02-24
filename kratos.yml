@@ -9,9 +9,8 @@ courier:
     from_name: ${COURIER_SMTP_FROM_NAME}
 
 log:
-  level: warning
+  level: info
   format: text
-  leak_sensitive_values: true
 
 ciphers:
   algorithm: xchacha20-poly1305
