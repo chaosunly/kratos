@@ -13,10 +13,6 @@ log:
   format: text
   leak_sensitive_values: true
 
-secrets:
-  cookie:
-    - ${SECRETS_COOKIE}
-
 ciphers:
   algorithm: xchacha20-poly1305
 
