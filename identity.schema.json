@@ -28,12 +28,23 @@
         "name": {
           "type": "object",
           "properties": {
-            "first": { "type": "string" },
-            "last": { "type": "string" }
-          }
+            "first": {
+              "type": "string",
+              "title": "First Name",
+              "minLength": 1,
+              "maxLength": 100
+            },
+            "last": {
+              "type": "string",
+              "title": "Last Name",
+              "minLength": 1,
+              "maxLength": 100
+            }
+          },
+          "required": ["first", "last"]
         }
       },
-      "required": ["email"],
+      "required": ["email", "name"],
       "additionalProperties": false
     }
   },

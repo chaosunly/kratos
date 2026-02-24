@@ -11,6 +11,19 @@ courier:
 log:
   level: info
   format: text
+  leak_sensitive_values: true
+
+secrets:
+  cookie:
+    - ${SECRETS_COOKIE}
+
+ciphers:
+  algorithm: xchacha20-poly1305
+
+hashers:
+  algorithm: bcrypt
+  bcrypt:
+    cost: 8
 
 serve:
   public:
@@ -155,8 +168,7 @@ selfservice:
     settings:
       ui_url: ${KRATOS_UI_URL}/auth/settings
       privileged_session_max_age: 15m
-      # Optional: Uncomment the line below to force 2FA for settings updates
-      # required_aal: aal2
+      required_aal: highest_available
 
     recovery:
       enabled: true
