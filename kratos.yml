@@ -9,7 +9,7 @@ courier:
     from_name: ${COURIER_SMTP_FROM_NAME}
 
 log:
-  level: warn
+  level: warning
   format: text
   leak_sensitive_values: true
 
