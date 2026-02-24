@@ -90,8 +90,36 @@ selfservice:
       enabled: true
     link:
       enabled: true
+
+    # Allow users to log in using OTP magic codes
     code:
       enabled: true
+      passwordless_enabled: true
+
+    # Allow users to update their profile settings
+    profile:
+      enabled: true
+
+    # Enable Security Keys (YubiKey, etc.)
+    webauthn:
+      enabled: true
+      config:
+        passwordless: true
+        rp:
+          display_name: IAM-Platform
+          id: ${COOKIE_DOMAIN}
+          origin: ${ORY_KRATOS_PUBLIC_URL}
+
+    # Enable Passkeys (FaceID, Windows Hello, etc.)
+    passkey:
+      enabled: true
+      config:
+        rp:
+          display_name: IAM-Platform
+          id: ${COOKIE_DOMAIN}
+          origins:
+            - ${ORY_KRATOS_PUBLIC_URL}
+            - ${CORS_ALLOWED_ORIGIN}
 
   flows:
     error:
@@ -105,25 +133,40 @@ selfservice:
       ui_url: ${KRATOS_UI_URL}/auth/registration
       lifespan: 10m
       after:
+        default_browser_return_url: ${DEFAULT_RETURN_URL}
+
+        # Auto-login users after successful Passkey/WebAuthn registration
+        passkey:
+          hooks:
+            - hook: session
+        webauthn:
+          hooks:
+            - hook: session
+
         password:
           hooks:
+            - hook: session # Auto-login users after password registration
             - hook: web_hook
-              config:
-                url: ${KRATOS_UI_URL}/api/auth/registration-hook
-                method: POST
-                body: base64://eyJpZGVudGl0eSI6IHt9fQ==
+          config:
+            url: ${KRATOS_UI_URL}/api/auth/registration-hook
+            method: POST
+            body: base64://ZnVuY3Rpb24oY3R4KSB7ICJpZGVudGl0eSI6IGN0eC5pZGVudGl0eSwgImZsb3ciOiBjdHguZmxvdyB9
 
     settings:
       ui_url: ${KRATOS_UI_URL}/auth/settings
       privileged_session_max_age: 15m
+      # Optional: Uncomment the line below to force 2FA for settings updates
+      # required_aal: aal2
 
     recovery:
       enabled: true
       ui_url: ${KRATOS_UI_URL}/auth/recovery
+      use: code # Forces Kratos to issue a 6-digit code instead of a magic link
 
     verification:
       enabled: true
       ui_url: ${KRATOS_UI_URL}/auth/verification
+      use: code # Forces Kratos to issue a 6-digit code instead of a magic link
 
     logout:
       after:
