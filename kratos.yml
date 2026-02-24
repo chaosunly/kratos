@@ -14,7 +14,7 @@ log:
 
 serve:
   public:
-    base_url: https://gateway-production-7363.up.railway.app
+    base_url: https://gateway-production-6cac.up.railway.app
     host: 0.0.0.0
     port: 4433
     cors:
@@ -102,7 +102,7 @@ selfservice:
           hooks:
             - hook: web_hook
               config:
-                url:https://gateway-production-6cac.up.railway.app/api/registration-hook
+                url: https://gateway-production-6cac.up.railway.app/api/registration-hook
                 method: POST
                 body: base64://eyJpZGVudGl0eSI6IHt9fQ==
 
