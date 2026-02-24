@@ -9,7 +9,7 @@ courier:
     from_name: ${COURIER_SMTP_FROM_NAME}
 
 log:
-  level: info
+  level: warn
   format: text
   leak_sensitive_values: true
 
@@ -49,6 +49,8 @@ secrets:
     - ${SECRETS_DEFAULT}
   cookie:
     - ${SECRETS_COOKIE}
+  cipher:
+    - ${SECRETS_CIPHER}
 
 identity:
   default_schema_id: default
