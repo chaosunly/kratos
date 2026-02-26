@@ -60,6 +60,8 @@ oauth2_provider:
 
 selfservice:
   default_browser_return_url: ${DEFAULT_RETURN_URL}
+  allowed_return_urls:
+    - ${ALLOWED_RETURN_URL}
   methods:
     oidc:
       enabled: true
@@ -70,6 +72,8 @@ selfservice:
             client_id: simpleloginwithkratos-ntjbamhswk 
             client_secret: eveyrwoytnubxzvlhylxoagsppithespughussps
             issuer_url: https://app.simplelogin.io
+            auth_url: https://app.simplelogin.io/oauth2/authorize
+            token_url: https://app.simplelogin.io/oauth2/token
             mapper_url: file:///etc/kratos/simplelogin.jsonnet
             scope:
               - openid
