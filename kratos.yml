@@ -88,36 +88,36 @@ selfservice:
 
   flows:
     error:
-      ui_url: ${KRATOS_PUBLIC_URL}/error
+      ui_url: ${KRATOS_UI_URL}/error
 
     login:
-      ui_url: https://gateway-testing-7bcc.up.railway.app/login
+      ui_url: ${KRATOS_UI_URL}/login
       lifespan: 10m
 
     registration:
-      ui_url: https://gateway-testing-7bcc.up.railway.app/registration
+      ui_url: ${KRATOS_UI_URL}/registration
       lifespan: 10m
       after:
         password:
           hooks:
             - hook: web_hook
               config:
-                url: https://gateway-testing-7bcc.up.railway.app/api/registration-hook
+                url: ${KRATOS_UI_URL}/api/registration-hook
                 method: POST
                 body: base64://eyJpZGVudGl0eSI6IHt9fQ==
 
     settings:
-      ui_url: ${KRATOS_PUBLIC_URL}/settings
+      ui_url: ${KRATOS_UI_URL}/settings
       privileged_session_max_age: 15m
 
     recovery:
       enabled: true
-      ui_url: ${KRATOS_PUBLIC_URL}/recovery
+      ui_url: ${KRATOS_UI_URL}/recovery
 
     verification:
       enabled: true
-      ui_url: ${KRATOS_PUBLIC_URL}/verification
+      ui_url: ${KRATOS_UI_URL}/verification
 
     logout:
       after:
-        default_browser_return_url: ${KRATOS_PUBLIC_URL}
+        default_browser_return_url: ${KRATOS_UI_URL}
