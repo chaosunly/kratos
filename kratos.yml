@@ -14,7 +14,7 @@ log:
 
 serve:
   public:
-    base_url: https://gateway-testing-7bcc.up.railway.app
+    base_url: ${KRATOS_UI_URL}
     host: 0.0.0.0
     port: 4433
     cors:
