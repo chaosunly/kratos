@@ -14,7 +14,7 @@ log:
 
 serve:
   public:
-    base_url: https://gateway-production-6cac.up.railway.app
+    base_url: https://gateway-testing-7bcc.up.railway.app
     host: 0.0.0.0
     port: 4433
     cors:
@@ -91,18 +91,18 @@ selfservice:
       ui_url: ${KRATOS_PUBLIC_URL}/error
 
     login:
-      ui_url: https://gateway-production-6cac.up.railway.app/login
+      ui_url: https://gateway-testing-7bcc.up.railway.app/login
       lifespan: 10m
 
     registration:
-      ui_url: https://gateway-production-6cac.up.railway.app/registration
+      ui_url: https://gateway-testing-7bcc.up.railway.app/registration
       lifespan: 10m
       after:
         password:
           hooks:
             - hook: web_hook
               config:
-                url: https://gateway-production-6cac.up.railway.app/api/registration-hook
+                url: https://gateway-testing-7bcc.up.railway.app/api/registration-hook
                 method: POST
                 body: base64://eyJpZGVudGl0eSI6IHt9fQ==
 
