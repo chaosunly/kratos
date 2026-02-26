@@ -14,7 +14,7 @@ log:
 
 serve:
   public:
-    base_url: ${KRATOS_PUBLIC_URL}
+    base_url: ${ORY_KRATOS_PUBLIC_URL}
     host: 0.0.0.0
     port: 4433
     cors:
@@ -62,22 +62,29 @@ selfservice:
   default_browser_return_url: ${DEFAULT_RETURN_URL}
   allowed_return_urls:
     - ${ALLOWED_RETURN_URL}
+
   methods:
     oidc:
       enabled: true
-      config: 
+      config:
         providers:
           - id: simplelogin
             provider: generic
-            client_id: simpleloginwithkratos-ntjbamhswk 
+            label: SimpleLogin
+            client_id: simpleloginwithkratos-ntjbamhswk
             client_secret: eveyrwoytnubxzvlhylxoagsppithespughussps
             issuer_url: https://app.simplelogin.io
-            auth_url: https://app.simplelogin.io/oauth2/authorize
-            token_url: https://app.simplelogin.io/oauth2/token
-            mapper_url: file:///etc/kratos/simplelogin.jsonnet
+            mapper_url: base64://bG9jYWwgY2xhaW1zID0gc3RkLmV4dFZhcignY2xhaW1zJyk7CnsKICBpZGVudGl0eTogewogICAgdHJhaXRzOiB7CiAgICAgIGVtYWlsOiBjbGFpbXMuZW1haWwsCiAgICAgIG5hbWU6IHsKICAgICAgICBmaXJzdDogY2xhaW1zLm5hbWUsCiAgICAgIH0sCiAgICB9LAogIH0sCn0K
             scope:
               - openid
               - email
+              - profile
+            requested_claims:
+              id_token:
+                email:
+                  essential: true
+                name:
+                  essential: false
     password:
       enabled: true
     totp:
@@ -102,8 +109,10 @@ selfservice:
       ui_url: ${KRATOS_UI_URL}/auth/registration
       lifespan: 10m
       after:
+        default_browser_return_url: ${DEFAULT_RETURN_URL}
         password:
           hooks:
+            - hook: session
             - hook: web_hook
               config:
                 url: ${KRATOS_UI_URL}/api/registration-hook
