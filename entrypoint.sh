@@ -2,7 +2,6 @@
 set -e
 
 # Ensure these exist (Railway sets them, this just makes it explicit)
-: "${ORY_KRATOS_PUBLIC_URL:?missing}"
 : "${KRATOS_UI_URL:?missing}"
 : "${DEFAULT_RETURN_URL:?missing}"
 : "${ALLOWED_RETURN_URL:?missing}"
