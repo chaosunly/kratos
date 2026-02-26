@@ -71,8 +71,8 @@ selfservice:
           - id: simplelogin
             provider: generic
             label: SimpleLogin
-            client_id: simpleloginwithkratos-ntjbamhswk
-            client_secret: eveyrwoytnubxzvlhylxoagsppithespughussps
+            client_id: superhydra-ainiyzidnu
+            client_secret: dvxfkayqaatwmujcigarlejcxwwggwilpsmhbosx
             issuer_url: https://app.simplelogin.io
             mapper_url: base64://bG9jYWwgY2xhaW1zID0gc3RkLmV4dFZhcignY2xhaW1zJyk7CnsKICBpZGVudGl0eTogewogICAgdHJhaXRzOiB7CiAgICAgIGVtYWlsOiBjbGFpbXMuZW1haWwsCiAgICAgIG5hbWU6IHsKICAgICAgICBmaXJzdDogY2xhaW1zLm5hbWUsCiAgICAgIH0sCiAgICB9LAogIH0sCn0K
             scope:
