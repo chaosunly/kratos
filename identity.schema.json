@@ -34,6 +34,19 @@
         "username": {
           "type": "string",
           "title": "Username"
+        },
+        "name": {
+          "type": "object",
+          "properties": {
+            "first": {
+              "type": "string",
+              "title": "First Name"
+            },
+            "last": {
+              "type": "string",
+              "title": "Last Name"
+            }
+          }
         }
       },
       "required": ["email"],
