@@ -31,22 +31,9 @@
             }
           }
         },
-        "name": {
-          "type": "object",
-          "properties": {
-            "first": {
-              "type": "string",
-              "title": "First Name",
-              "minLength": 1,
-              "maxLength": 100
-            },
-            "last": {
-              "type": "string",
-              "title": "Last Name",
-              "minLength": 1,
-              "maxLength": 100
-            }
-          }
+        "username": {
+          "type": "string",
+          "title": "Username"
         }
       },
       "required": ["email"],

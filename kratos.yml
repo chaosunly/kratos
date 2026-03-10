@@ -77,11 +77,11 @@ selfservice:
         providers:
           - id: simplelogin
             provider: generic
-            label: SimpleLogin
-            client_id: simpleloginwithkratos-ntjbamhswk
-            client_secret: eveyrwoytnubxzvlhylxoagsppithespughussps
+            label: Proton
+            client_id: ${SIMPLELOGIN_CLIENT_ID}
+            client_secret: ${SIMPLELOGIN_CLIENT_SECRET}
             issuer_url: https://app.simplelogin.io
-            mapper_url: base64://bG9jYWwgY2xhaW1zID0gc3RkLmV4dFZhcignY2xhaW1zJyk7CnsKICBpZGVudGl0eTogewogICAgdHJhaXRzOiB7CiAgICAgIGVtYWlsOiBjbGFpbXMuZW1haWwsCiAgICAgIG5hbWU6IHsKICAgICAgICBmaXJzdDogY2xhaW1zLm5hbWUsCiAgICAgIH0sCiAgICB9LAogIH0sCn0K
+            mapper_url: base64://bG9jYWwgY2xhaW1zID0gc3RkLmV4dFZhcigiY2xhaW1zIik7CnsKICBpZGVudGl0eTogewogICAgdHJhaXRzOiB7CiAgICAgIGVtYWlsOiBjbGFpbXMuZW1haWwsCiAgICAgIHVzZXJuYW1lOiBpZiBzdGQub2JqZWN0SGFzKGNsYWltcywgIm5hbWUiKSB0aGVuIGNsYWltcy5uYW1lCiAgICAgICAgICAgICAgICBlbHNlIHN0ZC5zcGxpdChjbGFpbXMuZW1haWwsICJAIilbMF0sCiAgICB9LAogIH0sCn0K
             scope:
               - openid
               - email
@@ -90,7 +90,7 @@ selfservice:
               id_token:
                 email:
                   essential: true
-                name:
+                email_verified:
                   essential: false
     password:
       enabled: true
