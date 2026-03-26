@@ -60,7 +60,7 @@ identity:
 session:
   lifespan: 24h
   cookie:
-    same_site: Lax
+    same_site: None
     path: /
     domain: ${COOKIE_DOMAIN}
     persistent: true
