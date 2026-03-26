@@ -22,6 +22,18 @@ hashers:
 
 serve:
   public:
+    # IMPORTANT: base_url must be the PUBLIC gateway URL + /.ory prefix.
+    # Kratos constructs OIDC callback URLs as:
+    #   ${base_url}/self-service/methods/oidc/callback/<provider>
+    # nginx rewrites /.ory/X → /X before forwarding to Kratos (port 4433), so
+    # the public-facing URL must include /.ory so that SimpleLogin/Proton and
+    # any other OIDC providers can redirect back via the gateway correctly.
+    #
+    # Correct Railway value: https://<your-gateway-domain>/.ory
+    # Example: ORY_KRATOS_PUBLIC_URL=https://gateway-production-6cac.up.railway.app/.ory
+    #
+    # Then register this callback URI in SimpleLogin's OIDC client:
+    #   https://<gateway-domain>/.ory/self-service/methods/oidc/callback/simplelogin
     base_url: ${ORY_KRATOS_PUBLIC_URL}
     host: 0.0.0.0
     port: 4433
