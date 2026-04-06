@@ -154,6 +154,7 @@ selfservice:
     registration:
       ui_url: ${KRATOS_UI_URL}/auth/registration
       lifespan: 10m
+      enable_legacy_one_step: true # Kratos v1.2+ defaults to two-step; keep single-step form
       after:
         default_browser_return_url: ${DEFAULT_RETURN_URL}
 
