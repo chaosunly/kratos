@@ -11,6 +11,7 @@ set -e
 : "${DSN:?DSN is required}"
 : "${SECRETS_DEFAULT:?SECRETS_DEFAULT is required}"
 : "${SECRETS_COOKIE:?SECRETS_COOKIE is required}"
+: "${SECRETS_CIPHER:?SECRETS_CIPHER is required (generate with: openssl rand -base64 32)}"
 : "${COURIER_SMTP_CONNECTION_URI:?COURIER_SMTP_CONNECTION_URI is required}"
 : "${COURIER_SMTP_FROM_ADDRESS:?COURIER_SMTP_FROM_ADDRESS is required}"
 : "${COURIER_SMTP_FROM_NAME:?COURIER_SMTP_FROM_NAME is required}"
