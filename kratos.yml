@@ -173,6 +173,8 @@ selfservice:
                 url: ${KRATOS_UI_URL}/api/auth/registration-hook
                 method: POST
                 body: base64://ZnVuY3Rpb24oY3R4KSB7ICJpZGVudGl0eSI6IGN0eC5pZGVudGl0eSwgImZsb3ciOiBjdHguZmxvdyB9
+                response:
+                  ignore: true # Don't abort registration if webhook fails
 
         oidc:
           hooks:
@@ -182,6 +184,8 @@ selfservice:
                 url: ${KRATOS_UI_URL}/api/auth/registration-hook
                 method: POST
                 body: base64://ZnVuY3Rpb24oY3R4KSB7ICJpZGVudGl0eSI6IGN0eC5pZGVudGl0eSwgImZsb3ciOiBjdHguZmxvdyB9
+                response:
+                  ignore: true
 
         code:
           hooks:
@@ -191,6 +195,8 @@ selfservice:
                 url: ${KRATOS_UI_URL}/api/auth/registration-hook
                 method: POST
                 body: base64://ZnVuY3Rpb24oY3R4KSB7ICJpZGVudGl0eSI6IGN0eC5pZGVudGl0eSwgImZsb3ciOiBjdHguZmxvdyB9
+                response:
+                  ignore: true
 
     settings:
       ui_url: ${KRATOS_UI_URL}/auth/settings
