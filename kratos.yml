@@ -126,7 +126,7 @@ selfservice:
     webauthn:
       enabled: true
       config:
-        passwordless: true
+        passwordless: false
         rp:
           display_name: IAM-Platform
           id: ${COOKIE_DOMAIN}
