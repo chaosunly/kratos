@@ -130,7 +130,9 @@ selfservice:
         rp:
           display_name: IAM-Platform
           id: ${COOKIE_DOMAIN}
-          origin: ${ORY_KRATOS_PUBLIC_URL}
+          # Must be a bare origin (scheme://host) — ORY_KRATOS_PUBLIC_URL includes
+          # the /.ory path prefix required for OIDC callbacks, making it invalid here.
+          origin: ${CORS_ALLOWED_ORIGIN}
 
     # Enable Passkeys (FaceID, Windows Hello, etc.)
     passkey:
@@ -140,7 +142,6 @@ selfservice:
           display_name: IAM-Platform
           id: ${COOKIE_DOMAIN}
           origins:
-            - ${ORY_KRATOS_PUBLIC_URL}
             - ${CORS_ALLOWED_ORIGIN}
 
   flows:
