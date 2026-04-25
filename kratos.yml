@@ -201,7 +201,7 @@ selfservice:
                   ignore: true
 
     settings:
-      ui_url: ${KRATOS_UI_URL}/auth/settings
+      ui_url: ${KRATOS_UI_URL}/dashboard/settings
       privileged_session_max_age: 15m
       required_aal: highest_available
 
